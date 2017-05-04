@@ -31,6 +31,7 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         // this code is from minhaj PC
+        //this line is from shariq's PC
         ButterKnife.bind(this);
         difficulty = getIntent().getIntExtra("diff", 0);
         category = getIntent().getIntExtra("cat", 0);
