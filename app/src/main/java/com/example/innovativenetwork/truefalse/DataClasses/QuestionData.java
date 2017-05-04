@@ -1,4 +1,4 @@
-package com.example.innovativenetwork.truefalse;
+package com.example.innovativenetwork.truefalse.DataClasses;
 
 import com.orm.SugarRecord;
 
@@ -65,5 +65,18 @@ public class QuestionData extends SugarRecord {
 
     public void setQuestionText(String questionText) {
         this.questionText = questionText;
+    }
+
+    @Override
+    public String toString() {
+        return "QuestionData{" +
+                "dificulty=" + dificulty +
+                ", category=" + category +
+                ", isAnswered=" + isAnswered +
+                ", answer=" + answer +
+                ", givenAnswer=" + givenAnswer +
+                ", imageBase64='" +imageBase64 + '\'' +
+                ", questionText='" + questionText + '\'' +
+                '}';
     }
 }

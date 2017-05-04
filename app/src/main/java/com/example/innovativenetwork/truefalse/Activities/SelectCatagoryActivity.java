@@ -1,4 +1,4 @@
-package com.example.innovativenetwork.truefalse;
+package com.example.innovativenetwork.truefalse.Activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -7,6 +7,9 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.innovativenetwork.truefalse.R;
+import com.example.innovativenetwork.truefalse.Utills.Constants;
 
 public class SelectCatagoryActivity extends AppCompatActivity implements View.OnTouchListener{
 
@@ -82,44 +85,54 @@ public class SelectCatagoryActivity extends AppCompatActivity implements View.On
                 break;
 
             case MotionEvent.ACTION_UP:
+                Intent intent = new Intent(SelectCatagoryActivity.this,GameActivity.class);
                 switch (view.getId()) {
 
                     case R.id.btn_color:
                         btn_color.setTextColor(Color.BLACK);
                         btn_color.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectCatagoryActivity.this,GameActivity.class));
 
+                        intent.putExtra("diff", getIntent().getIntExtra("diff",0));
+                        intent.putExtra("cat", Constants.CAT_COLOR);
+                        startActivity(intent);
                         break;
                     case R.id.btn_number:
                         btn_number.setTextColor(Color.BLACK);
                         btn_number.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectCatagoryActivity.this,GameActivity.class));
-
+                        intent.putExtra("diff", getIntent().getIntExtra("diff",0));
+                        intent.putExtra("cat", Constants.CAT_NUMBER);
+                        startActivity(intent);
                         break;
 
                     case R.id.btn_animal:
                         btn_animal.setTextColor(Color.BLACK);
                         btn_animal.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectCatagoryActivity.this,GameActivity.class));
+                        intent.putExtra("diff", getIntent().getIntExtra("diff",0));
+                        intent.putExtra("cat", Constants.CAT_ANIMAL);
+                        startActivity(intent);
 
                         break;
                     case R.id.btn_fruit:
                         btn_fruit.setTextColor(Color.BLACK);
                         btn_fruit.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectCatagoryActivity.this,GameActivity.class));
-
+                        intent.putExtra("diff", getIntent().getIntExtra("diff",0));
+                        intent.putExtra("cat", Constants.CAT_FRUIT);
+                        startActivity(intent);
                         break;
                     case R.id.btn_object:
                         btn_object.setTextColor(Color.BLACK);
                         btn_object.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectCatagoryActivity.this,GameActivity.class));
+                        intent.putExtra("diff", getIntent().getIntExtra("diff",0));
+                        intent.putExtra("cat", Constants.CAT_OBJECT);
+                        startActivity(intent);
 
                         break;
                     case R.id.btn_language:
                         btn_language.setTextColor(Color.BLACK);
                         btn_language.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectCatagoryActivity.this,GameActivity.class));
-
+                        intent.putExtra("diff", getIntent().getIntExtra("diff",0));
+                        intent.putExtra("cat", Constants.CAT_Language);
+                        startActivity(intent);
                         break;
                 }
 

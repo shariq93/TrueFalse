@@ -1,4 +1,4 @@
-package com.example.innovativenetwork.truefalse;
+package com.example.innovativenetwork.truefalse.Activities;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,9 +8,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 
-public class SelectDifficultyActivity extends AppCompatActivity implements View.OnTouchListener{
+import com.example.innovativenetwork.truefalse.R;
+import com.example.innovativenetwork.truefalse.Utills.Constants;
 
-    Button btn_baby,btn_easy,btn_medium,btn_high,btn_superHigh,btn_megaHigh;
+public class SelectDifficultyActivity extends AppCompatActivity implements View.OnTouchListener {
+
+    Button btn_baby, btn_easy, btn_medium, btn_high, btn_superHigh, btn_megaHigh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,44 +78,49 @@ public class SelectDifficultyActivity extends AppCompatActivity implements View.
                 break;
 
             case MotionEvent.ACTION_UP:
+                Intent intent = new Intent(SelectDifficultyActivity.this, SelectCatagoryActivity.class);
                 switch (view.getId()) {
 
                     case R.id.btn_baby:
                         btn_baby.setTextColor(Color.BLACK);
                         btn_baby.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectDifficultyActivity.this,SelectCatagoryActivity.class));
+
+                        intent.putExtra("diff", Constants.DIFF_BABY);
+                        startActivity(intent);
 
                         break;
                     case R.id.btn_easy:
                         btn_easy.setTextColor(Color.BLACK);
                         btn_easy.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectDifficultyActivity.this,SelectCatagoryActivity.class));
 
+                        intent.putExtra("diff", Constants.DIFF_EASY);
+                        startActivity(intent);
                         break;
 
                     case R.id.btn_medium:
                         btn_medium.setTextColor(Color.BLACK);
                         btn_medium.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectDifficultyActivity.this,SelectCatagoryActivity.class));
-
+                        intent.putExtra("diff", Constants.DIFF_MEDIUM);
+                        startActivity(intent);
                         break;
                     case R.id.btn_high:
                         btn_high.setTextColor(Color.BLACK);
                         btn_high.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectDifficultyActivity.this,SelectCatagoryActivity.class));
+                        intent.putExtra("diff", Constants.DIFF_HIGH);
+                        startActivity(intent);
 
                         break;
                     case R.id.btn_superHigh:
                         btn_superHigh.setTextColor(Color.BLACK);
                         btn_superHigh.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectDifficultyActivity.this,SelectCatagoryActivity.class));
-
+                        intent.putExtra("diff", Constants.DIFF_SUPER_HIGH);
+                        startActivity(intent);
                         break;
                     case R.id.btn_megaHigh:
                         btn_megaHigh.setTextColor(Color.BLACK);
                         btn_megaHigh.setBackgroundResource(R.drawable.btn_gray);
-                        startActivity(new Intent(SelectDifficultyActivity.this,SelectCatagoryActivity.class));
-
+                        intent.putExtra("diff", Constants.DIFF_MEGA_HIGH);
+                        startActivity(intent);
                         break;
                 }
 

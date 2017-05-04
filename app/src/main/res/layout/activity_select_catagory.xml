@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/greenbgplank"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.innovativenetwork.truefalse.SelectCatagoryActivity">
+    tools:context="com.example.innovativenetwork.truefalse.Activities.SelectCatagoryActivity">
 
 
     <TextView

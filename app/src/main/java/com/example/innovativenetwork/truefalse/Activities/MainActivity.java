@@ -1,6 +1,5 @@
-package com.example.innovativenetwork.truefalse;
+package com.example.innovativenetwork.truefalse.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -9,11 +8,10 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
+import com.example.innovativenetwork.truefalse.BuildConfig;
+import com.example.innovativenetwork.truefalse.R;
 import com.orm.SugarContext;
-import com.orm.SugarDb;
-import com.orm.SugarRecord;
 
 import java.lang.reflect.Method;
 
