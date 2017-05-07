@@ -2,18 +2,28 @@ package com.example.innovativenetwork.truefalse.Activities;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.innovativenetwork.truefalse.BuildConfig;
+import com.example.innovativenetwork.truefalse.DataClasses.QuestionData;
 import com.example.innovativenetwork.truefalse.R;
 import com.orm.SugarContext;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.lang.reflect.Method;
+import java.nio.channels.FileChannel;
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
 
@@ -25,6 +35,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         SugarContext.init(this);
+        QuestionData data = new QuestionData();
+        data.save();
 
         btn_start = (Button) findViewById(R.id.btn_start);
         btn_option = (Button) findViewById(R.id.btn_options);
@@ -36,6 +48,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
 
         showDebugDBAddressLogToast();
+        copyDataBase();
 
     }
 
@@ -96,4 +109,41 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             }
         }
     }
+
+    public static  String DB_PATH = "";
+    public static final String DB_NAME = "true_false.db";
+    private void copyDataBase()
+    {
+        DB_PATH = "data/data/" + getPackageName() + "/databases/";
+        Log.i("Database",
+                "New database is being copied to device!");
+        byte[] buffer = new byte[1024];
+        OutputStream myOutput = null;
+        int length;
+        // Open your local db as the input stream
+        InputStream myInput = null;
+        try
+        {
+            myInput =getAssets().open(DB_NAME);
+            // transfer bytes from the inputfile to the
+            // outputfile
+            myOutput =new FileOutputStream(DB_PATH+ DB_NAME);
+            while((length = myInput.read(buffer)) > 0)
+            {
+                myOutput.write(buffer, 0, length);
+            }
+            myOutput.close();
+            myOutput.flush();
+            myInput.close();
+            Log.i("Database",
+                    "New database has been copied to device!");
+
+
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 }
