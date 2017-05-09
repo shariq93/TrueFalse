@@ -1,6 +1,9 @@
 package com.example.innovativenetwork.truefalse.Activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -18,6 +21,10 @@ import com.example.innovativenetwork.truefalse.R;
 import com.example.innovativenetwork.truefalse.Utills.LevelDataHolder;
 import com.orm.query.Condition;
 import com.orm.query.Select;
+import  android.util.Base64;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -63,7 +70,22 @@ public class GameActivity extends AppCompatActivity {
         if (LevelDataHolder.questionsList.size() > 0) {
             QuestionData data = LevelDataHolder.questionsList.get(index);
             if (data != null) {
-                Glide.with(this).load(data.getImageBase64()).placeholder(R.drawable.placeholder2).into(ivQuestinImage);
+                Log.i("=========", "onCreate: "+ data.toString());
+                try {
+                    // get input stream
+
+                    InputStream ims = getAssets().open(data.getImageBase64());
+                    // load image as Drawable
+                    Drawable d = Drawable.createFromStream(ims, null);
+                    // set image to ImageView
+                    ivQuestinImage.setImageDrawable(d);
+                }
+                catch(IOException ex) {
+                    ex.printStackTrace();
+                }
+              // byte[] decodedString = Base64.decode(data.getImageBase64(), Base64.DEFAULT);
+               // Bitmap decodedByte = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
+               // Glide.with(this).load(decodedString).placeholder(R.drawable.placeholder2).into(ivQuestinImage);
                 tvQuestionText.setText(data.getQuestionText());
             }
         }
@@ -114,8 +136,19 @@ public class GameActivity extends AppCompatActivity {
                             } else {
                                 QuestionData data = LevelDataHolder.questionsList.get(index);
                                 if (data != null) {
-                                    Glide.with(GameActivity.this).load(data.getImageBase64()).placeholder(R.drawable.placeholder2).into(ivQuestinImage);
-                                    tvQuestionText.setText(data.getQuestionText());
+
+
+                                    try {
+                                        InputStream ims = getAssets().open(data.getImageBase64());
+                                        // load image as Drawable
+                                        Drawable d = Drawable.createFromStream(ims, null);
+                                        // set image to ImageView
+                                        ivQuestinImage.setImageDrawable(d);
+                                    }
+                                    catch(IOException ex) {
+                                        ex.printStackTrace();
+                                    }
+                                   tvQuestionText.setText(data.getQuestionText());
 
                                 }
                             }
